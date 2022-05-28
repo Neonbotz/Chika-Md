@@ -194,6 +194,21 @@ module.exports = chika = async (chika, m, chatUpdate, store) => {
         }
         }
 
+       //anti call
+           if (global.anticall) {
+  if (db.settings[botNumber].anticall) {
+  chika.ws.on('CB:call', async (json) => {
+  const callerId = json.content[0].attrs['call-creator']
+  if (json.content[0].tag == 'offer') {
+  var riych = await chika.sendContact(callerId, global.owner)
+  chika.sendMessage(callerId, { text: `Sistem otomatis block!\nJangan menelpon bot!\nSilahkan Hubungi Owner Untuk Dibuka !`}, { quoted : m})
+  await sleep(8000)
+  await chika.updateBlockStatus(callerId, "block")
+  }
+  })
+  }
+  }
+
       // Mute Chat
       if (db.data.chats[m.chat].mute && !isAdmins && !isCreator) {
       return
@@ -3271,6 +3286,142 @@ let capt = `⭔ Title: ${judul}
             chika.sendImage(m.chat, res.result[0].thumbnail, capt, m)
             }
             break
+           //NEW FITUR
+
+            case 'nsfw': {
+        if (!m.key.fromMe && !isCreator) return reply(mess.owner())
+        if (args[0] === "on") {
+        	if (global.db.data.chats[m.chat].nsfw) return reply(`Sudah Aktif Sebelumnya`)
+        global.db.data.chats[m.chat].nsfw = true
+        reply(`NsFw Berhasil Di Aktifkan !`)
+        } else if (args[0] === "off") {
+        	if (!global.db.data.chats[m.chat].nsfw) return reply(`Sudah Nonaktif Sebelumnya`)
+        global.db.data.chats[m.chat].nsfw = false
+        reply(`NsFw Berhasil Di Nonaktifkan !`)
+        } else {
+        	chika.sendButtonText(from, 'Mode Nfsw', `© ${ownername}`, [{buttonId: 'nsfw on', buttonText: {displayText: 'ON'}, type: 1},{buttonId: 'nsfw off', buttonText: {displayText: 'OFF'}, type: 1}], {quoted: m})
+			}
+		}
+			break
+            case 'attp':
+	       if (!q) return reply("Textnya mana kak")
+nyz200 = await getBuffer(`https://myselfff.herokuapp.com/docs/random/attp?query=${q}`)
+chika.sendMessage(from, {sticker:nyz200}, {quoted:m})
+break
+
+  
+
+case 'asupan': {
+	    reply(mess.wait)
+                chika.sendMessage(m.chat, { video: { url: api('zenz', '/api/random/'+command, {}, 'apikey') }, caption: 'Random ' + command }, { quoted: m })
+            }
+            break
+            case 'darkjoke': case 'darkjokes': {
+            chika.sendMessage(m.chat, { image: { url: api('zenz', '/api/random/'+command, {}, 'apikey') }, caption: 'Random ' + command }, { quoted: m })
+            }
+            break
+            case 'memeindo': case 'meme': {
+            chika.sendMessage(m.chat, { image: { url: api('zenz', '/api/random/'+command, {}, 'apikey') }, caption: 'Random ' + command }, { quoted: m })
+            }
+            break
+           case 'patrik':
+case 'patrick': {
+var ano = await fetchJson('https://raw.githubusercontent.com/rashidsiregar28/data/main/patrik')
+var wifegerak = ano.split('\n')
+var wifegerakx = wifegerak[Math.floor(Math.random() * wifegerak.length)]
+encmedia = await chika.sendImageAsSticker(from, wifegerakx, m, { packname: global.packname, author: global.author, })
+await fs.unlinkSync(encmedia)
+}
+break
+
+case 'nuliskiri':
+if (!q) return reply('Textnya mana kak?')
+reply(mess.wait)
+xx = await getBuffer(`https://hardianto.xyz/api/nuliskiri?text=${q}&apikey=hardianto`)
+chika.sendMessage(from, {image:xx}, {quoted:m})
+break
+
+case 'nuliskanan':
+if (!q) return reply('Textnya mana kak?')
+reply(mess.wait)
+xx6 = await getBuffer(`https://hardianto.xyz/api/nuliskanan?text=${q}&apikey=hardianto`)
+chika.sendMessage(from, {image:xx6}, {quoted:m})
+break
+
+case 'ttp':
+if (!q) return reply('Textnya mana kak?')
+reply(mess.wait)
+xxx = await getBuffer(`https://hardianto.xyz/api/ttp?text=${q}&apikey=hardianto`)
+chika.sendMessage(from, {sticker:xxx}, {quoted:m})
+break
+           case 'cosplay': {
+           if (!db.data.chats[m.chat].nsfw) return reply('Fitur nsfw belum di aktifkan')
+           chika.sendMessage(m.chat, { image: { url: api('zenz', '/api/random/'+command, {}, 'apikey') }, caption: 'Random' + command }, { quoted: m })
+            }
+            break
+                        //case pesan - jawab
+  case 'Assalamualaikum': case 'assalamualaikum': case 'Assalamualaikum Wr. Wb': {
+chika.sendMessage(m.chat, { sticker: fs.readFileSync('lib/salam.webp'), quoted:m})
+}
+  break
+  case '🗿':
+  chika.sendMessage(m.chat, { sticker: fs.readFileSync('lib/🗿.webp'), quoted:m})
+  break
+  case '🐦': 
+  chika.sendMessage(m.chat, { sticker: fs.readFileSync('lib/🐦.webp'), quoted:m})
+  break
+  case 'p': case 'pp': case 'ppp': {
+chika.sendMessage(m.chat, { audio: fs.readFileSync('./lib/diam.mp3'), mimetype: 'audio/mp4', ptt:true }, { quoted: m })
+}
+  break
+  case 'wibu':
+chika.sendMessage(m.chat, { sticker: fs.readFileSync('lib/wibu.webp'), quoted:m})
+break
+  case 'mantap':
+  chika.sendMessage(m.chat, { sticker: fs.readFileSync('lib/Mantap.webp'), quoted:m})
+case 'halo':
+chika.sendMessage(m.chat, { sticker: fs.readFileSync('lib/asik.webp'), quoted:m})
+break
+  
+  case 'restart':
+          if (!isCreator) return 
+          reply(mess.wait)
+          exec(`node main`)
+          reply('_Restarting Bot Success_')
+          break 
+  case 'bot': {
+chika.sendMessage(m.chat, { audio: fs.readFileSync('./lib/menu.mp3'), mimetype: 'audio/mp4', ptt:true }, { quoted: m })
+}
+  break
+  case 'anjir': case 'njir': {
+  chika.sendMessage(m.chat, { audio: fs.readFileSync('./lib/boong.mp3'), mimetype: 'audio/mp4', ptt:true }, { quoted: m })
+}
+break
+  case 'anjing': case 'anj': case 'asu': case 'asw': case 'bangsat': case 'kontol': case 'bgst': case 'kntl': case 'memek': case 'memeg': case 'mmek': case 'ngentod': case 'ngentot': {
+  chika.sendMessage(m.chat, { audio: fs.readFileSync('./lib/toxic.mp3'), mimetype: 'audio/mp4', ptt:true }, { quoted: m })
+}
+break
+  case 'thanks': case 'makasih': case 'thx':case 'terima kasih': case 'Terima Kasih': case 'Terima kasih': {
+  reply(`Sama-Sama Kak 🤗 ${pushname}`)
+  }
+  break
+  case 'bacot': case 'bct': case 'bcot': {
+  chika.sendMessage(m.chat, { sticker: fs.readFileSync('lib/Bacot.webp'), quoted:m})
+}
+			  break
+  case 'bot wibu': {
+  reply(`Lu Kntl Yang Wibu Anjg Lu🤬`) 
+  }
+  break
+  case 'textkosong': {
+  reply(`    ‎       ‎       ‎       ‎       ‎       ‎   `) 
+  }
+  break
+  //Case Cek Prefix
+  case 'cekpref': case 'cekprefix': {
+  reply('Bot Ini Menggunakan Multi Prefix Dan No Prefix')
+  }
+  break  
 // SET MENU & ALL MENU
 case "setmenu": 
 if (!isCreator) return reply(mess.owner)
@@ -3324,6 +3475,8 @@ await chika.send5ButGif(from, `` + '' + lang.menu(botname, pushname, salam), `©
 if(typemenu == 'list'){
 await chika.sendListMenu(from, `Selamat ${salam} kak ${pushname}` , lang.list(pushname) , 'CLICK HERE', {quoted: fkontak})
 }
+chika.sendMessage(m.chat, { sticker: fs.readFileSync('lib/pcr.webp'), quoted:m})
+chika.sendMessage(m.chat, { audio: fs.readFileSync('./lib/super.mp3'), mimetype: 'audio/mp4', ptt:true }, { quoted: m })
 }
 break
 case 'allmenu': {
@@ -3337,6 +3490,7 @@ await chika.send5ButGif(from, `` + '' + lang.allmenu(prefix, pushname, botname, 
 if(typemenu == 'catalog'){
 await chika.sendCatalog(from, 'ALL MENU', lang.allmenu(prefix, pushname, botname, time, salam), thumb, {quoted: ftroli})
 }
+chika.sendMessage(m.chat, { audio: fs.readFileSync('./lib/m.mp3'), mimetype: 'audio/mp4', ptt:true }, { quoted: m })
 }
 break
 case 'groupmenu':
