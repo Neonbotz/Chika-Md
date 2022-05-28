@@ -22,7 +22,8 @@ exports.list = (pushname) => {
 exports.allmenu = (prefix, pushname, botname, time, salam) => {
 return`  _Selamat ${salam} kak ${pushname}_
 
-  *⏰ Time Server : ${time}*
+  *🎭Creator : ${ownername}  
+  *⏰ Waktu : ${time}*
   *📚 List Menu : ${botname}*
 
   *GROUP MENU*
@@ -99,7 +100,12 @@ return`  _Selamat ${salam} kak ${pushname}_
   *≻* ${prefix}quotesanime
   *≻* ${prefix}couple
   *≻* ${prefix}darkjokes
-  
+  *≻* ${prefix}meme
+  *≻* ${prefix}memeindo
+  *≻* ${prefix}asupan
+  *≻* ${prefix}nuliskiri
+  *≻* ${prefix}nuliskanan
+
   *RANDOM ANIME MENU*
   *≻* ${prefix}loli
   *≻* ${prefix}neko
@@ -141,6 +147,7 @@ return`  _Selamat ${salam} kak ${pushname}_
   *≻* ${prefix}nekos 
   *≻* ${prefix}trap 
   *≻* ${prefix}blowjob 
+  *≻* ${prefix}cosplay
   
   *TEXT PRO MENU*
   *≻* ${prefix}3dchristmas
@@ -334,6 +341,8 @@ return`  _Selamat ${salam} kak ${pushname}_
   *≻* ${prefix}dbinary
   *≻* ${prefix}styletext
   *≻* ${prefix}smeme
+  *≻* ${prefix}ttp
+  *≻* ${prefix}attp
 
   *INFORMATION MENU*
   *≻* ${prefix}merdeka-news 
@@ -416,6 +425,7 @@ return`  _Selamat ${salam} kak ${pushname}_
   *≻* ${prefix}setexif
   *≻* ${prefix}setmenu
   *≻* ${prefix}setallmenu
+  *≻* ${prefix}nsfw (on/off) 
   
   *THANKS TO*
   *≻* DikaArdnt
@@ -426,6 +436,7 @@ return`  _Selamat ${salam} kak ${pushname}_
   *≻* Deff
   *≻* Sanzy
   *≻* Nekel
+  *≻* Yt Agungx
   *≻* Bagas Prdn
   `
 }
@@ -570,6 +581,11 @@ exports.randommenu = (prefix) => {
   *≻* ${prefix}quotesanime
   *≻* ${prefix}couple
   *≻* ${prefix}darkjokes
+  *≻* ${prefix}meme
+  *≻* ${prefix}memeindo
+  *≻* ${prefix}asupan
+  *≻* ${prefix}nuliskiri
+  *≻* ${prefix}nuliskanan
   `
 }
 
@@ -616,6 +632,7 @@ exports.randomanimemenu = (prefix) => {
   *≻* ${prefix}nekos 
   *≻* ${prefix}trap 
   *≻* ${prefix}blowjob 
+  *≻* ${prefix}cosplay
   `
 }
 
@@ -836,6 +853,8 @@ exports.convertmenu = (prefix) => {
   *≻* ${prefix}ebinary
   *≻* ${prefix}dbinary
   *≻* ${prefix}styletext
+  *≻* ${prefix}attp
+  *≻* ${prefix}ttp
   `
 }
 
@@ -946,6 +965,7 @@ exports.ownermenu = (prefix) => {
   *≻* ${prefix}setexif
   *≻* ${prefix}setmenu 
   *≻* ${prefix}setallmenu 
+  *≻* ${prefix}nsfw (on/off) 
   `
 }
 
@@ -961,6 +981,7 @@ exports.thanksto = () => {
   *≻* Deff
   *≻* Sanzy
   *≻* Nekel
+  *≻* Yt Agungx
   *≻* Bagas Prdn
 `
 }
