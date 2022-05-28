@@ -1852,8 +1852,7 @@ case 'webtonsearch': case 'webtoon':
                 })
             break
             case 'waifu': case 'husbu': case 'neko': case 'shinobu': case 'megumin': case 'waifus': case 'nekos': case 'trap': case 'blowjob': {
-                if (!db.data.chats[m.chat].nsfw) return reply('Fitur nsfw belum di aktifkan'
-                reply(mess.wait)
+                     reply(mess.wait)
                 chika.sendMessage(m.chat, { image: { url: api('zenz', '/api/random/'+command, {}, 'apikey') }, caption: 'Generate Random ' + command }, { quoted: m })
             }
             break
@@ -3149,7 +3148,6 @@ const sendm = chika.sendMessage(from, templateMessage)
             }
             break
 case 'cry':case 'kill':case 'hug':case 'pat':case 'lick':case 'kiss':case 'bite':case 'yeet':case 'neko':case 'bully':case 'bonk':case 'wink':case 'poke':case 'nom':case 'slap':case 'smile':case 'wave':case 'awoo':case 'blush':case 'smug':case 'glomp':case 'happy':case 'dance':case 'cringe':case 'cuddle':case 'highfive':case 'shinobu':case 'megumin':case 'handhold':
-                                      if (!db.data.chats[m.chat].nsfw) return reply('Fitur nsfw belum di aktifkan'
 					 if (!isPremium && global.db.data.users[m.sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 		            db.data.users[m.sender].limit -= 1 // -1 limit
                     reply(mess.wait)
@@ -3159,7 +3157,6 @@ case 'cry':case 'kill':case 'hug':case 'pat':case 'lick':case 'kiss':case 'bite'
 					})
 					break
 				case 'waifu': case 'loli':
-                                    if (!db.data.chats[m.chat].nsfw) return reply('Fitur nsfw belum di aktifkan'
 				     if (!isPremium && global.db.data.users[m.sender].limit < 1) return reply(mess.endLimit) // respon ketika limit habis
 		            db.data.users[m.sender].limit -= 1 // -1 limit
 					reply(mess.wait)
